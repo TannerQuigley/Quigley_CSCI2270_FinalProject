@@ -45,6 +45,7 @@ class MusicTree
 				void printMusicLibrary(SongNode *node);
 				int countSongNodes(SongNode *node);
 				SongNode *roo;
+				bool sfound;
 };
 
 #endif // MUSICTREE_H

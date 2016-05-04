@@ -15,6 +15,7 @@ using namespace rapidxml;
 MusicTree::MusicTree()
 {
 	roo = NULL;
+	sfound = false;
 }
 
  
@@ -117,7 +118,12 @@ void MusicTree::printMusicLibrary(SongNode *node)
 //Pulic Function to find song with root as param
 void MusicTree::findSong(string name)
 {
+	sfound = false;
 	findSong(roo,name);
+	if(sfound == false)
+	{
+		cout << "Song not found." << endl;
+	}
 }
 
 //Recursive Private function to find song in Tree, looks at entire tree
@@ -132,6 +138,7 @@ void MusicTree::findSong(SongNode *node, string name)
 			cout << "Artist:" << node->artist << endl;
 			cout << "Name:" << node->name << endl;
 			cout << "Album:" << node->album << endl;
+			sfound = true;
 			return;
 		}
 		else
@@ -145,7 +152,12 @@ void MusicTree::findSong(SongNode *node, string name)
 //Pulic Function that calls the private with root as node param
 void MusicTree::printAlbum(string album)
 {
+	sfound = false;
 	printAlbum(roo,album);
+	if(sfound == false)
+	{
+		cout << "Album not found." << endl;
+	}
 }
 
 //Private recursive function to search entire Tree for nodes with matching album name
@@ -159,6 +171,7 @@ void MusicTree::printAlbum(SongNode *node, string album)
 			cout << node->artist << endl;
 			printAlbum(node->left, album);
 			printAlbum(node->right, album);
+			sfound = true;
 		}
 		else
 		{
